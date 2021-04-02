@@ -5,9 +5,11 @@ A web application that shows stock information in AR.
 After cloning the repository, go the RobinhoodAR directory, and run these commands on your Command Line terminal
 
 1. On macOS: `python3 -m venv venv` to create a virtual environment.
+
 On Windows: `py -m venv venv`
 
-2. On macOS: `source venv/bin/activate` to activate virtual environment
+2. On macOS: `source venv/bin/activate` to activate virtual environment.
+
 On Windows: `.\env\Scripts\activate`
 
 3. `pip3 install -r requirements.txt` to install all dependencies
