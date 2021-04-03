@@ -21,3 +21,9 @@ Then, search for localhost:5000 on your browser to see the web app.
 ### Note
 Make sure to activate virtual environment before making any development. Once completed with development,
 run `pip3 freeze > requirements.txt` to update the file with new dependencies
+
+
+### robin-api: TODO - Add documentation for robin-api changes
+- make sure we can search for stock symbol/ticker
+- want to decide what stock information to get
+- figure out how to display the results from to the ar app
