@@ -5,6 +5,7 @@ import pprint
 
 login = rh.login("roshan.poduval@gmail.com","testpassword579")
 
+# if you search for 'apple' or 'alphabet', this works, but 'google' doesn't
 search = input("What company do you want to know about?")
 stock = rh.stocks.find_instrument_data(search)
 if stock[0] is not None:
