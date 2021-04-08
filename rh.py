@@ -3,7 +3,8 @@ import robin_stocks.gemini as gem
 import robin_stocks.tda as tda
 import pprint
 
-login = rh.login("roshan.poduval@gmail.com","testpassword579")
+login = rh.login("ruhulruzbihan@gmail.com","@Vehanwien1998")
+print(login)
 
 # if you search for 'apple' or 'alphabet' works (NOTE: Google name is not in Robinhood. Only Alphabet.)
 search = input("What company do you want to know about? ")
