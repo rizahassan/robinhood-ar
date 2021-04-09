@@ -1,0 +1,61 @@
+<!doctype HTML>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head><link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" /></head>
+    <style>#section-1 {
+        margin-top: 100px;
+        display: flex;
+    /* align-items items in column */
+    flex-direction: column;
+    /* center items horizontally */
+    align-items: center;
+    /* center items vertically */
+    justify-content: center;
+    }
+    
+    #title {
+    font-size:xx-large;
+    color:green;
+    font-family: "Capsule Sans Text", sans-serif;
+    text-align: center;
+    }
+    
+    #form{
+    margin-top: 50px;
+    font-family: "Capsule Sans Text", sans-serif;
+    text-align: center;
+    }
+    
+    img{
+    width:90%;
+    height:90%;
+    }
+
+    #error-msg{
+        color:red;
+        font-weight: bold;
+    }
+    
+    </style>
+    
+    <body>
+        <div id="section-1">
+            <img src="{{ url_for('static', filename='images/login_image.png') }}" alt="A person with a mobile camera">
+            
+        
+        <form id="form" action = "http://localhost:5000/authenticate" method = "post">
+            <h1 id="title">RobinhoodAR</h1>
+           <p>Username/Email:</p>
+           <p><input type = "text" name = "username" /></p>
+           <p>Password:</p>
+           <p><input type = "text" name = "password" /></p>
+           <p><input type = "submit" value = "AR in!" /></p>
+        </form>
+        <div>
+            <p id="error-msg">Invalid username or password. Please try again.</p>
+        </div>
+    
+        </div>   
+     
+</body>
+</html>
