@@ -27,7 +27,7 @@ def authenticate():
         print((username,password), file=sys.stderr)
 
 
-        if (username or password) is not '':
+        if (username or password) != '':
             message = {'message':'User authenticated'}
             
             login = rh.login(username,password)
