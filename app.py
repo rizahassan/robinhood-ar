@@ -14,7 +14,7 @@ url = "http://localhost:5000"
 
 @app.route('/')
 def login_page():
-    session['auth'] = False
+    session['auth'] = True
     return render_template('login.html')
 
 # Authenticate the Robinhood username and password
