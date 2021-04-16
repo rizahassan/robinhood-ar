@@ -29,8 +29,8 @@ def detect_text(path):
 
 
 def main():
-    detect_text("sample.jpg")
-    # detect_text("burberry.jpg")
+    # detect_text("sample.jpg")
+    detect_text("burberry.jpg")
     # detect_text("subway.jpg")
 
 
