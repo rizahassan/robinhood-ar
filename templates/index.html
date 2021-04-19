@@ -36,11 +36,25 @@
   <a-scene
   >
     <a-entity id="stock-card" position="0.3 1.7 -1"
-    geometry="primitive: plane; width: 0.3; height: 0.3"
-    material="color: green;"
-    text="font:kelsonsans; width:0.5; value:Company \n\n $0.00 \n\n - $1.64 (0.53%) Today \n\n -$0.37 (0.12%) After Hours; color: #212121; align: center;"
+    geometry="primitive: box; width: 0.45; height: 0.6; depth: 0.1"
+    material="color: #21c995;"
     >
+    <a-text font=kelsonsans position="-0.2 0.05 0.2" color="#212121" height="0.5" width="0.5" value="$0.00 \n\n - $1.64 (0.53%) Today \n\n -$0.37 (0.12%) After Hours"></a-text>
+    
+    <a-entity id="buybutton" position="-0.1 -0.13 0.2"
+    geometry="primitive: plane; width: 0.075; height: 0.075"
+    material="color: #00ba04;"
+    text="font:kelsonsans; width:0.4; value:Buy; color: #212121; align: center;">
 
+    <a-entity id="sellbutton" position="0.1 0 0"
+    geometry="primitive: plane; width: 0.075; height: 0.075"
+    material="color: #f45430;"
+    text="font:kelsonsans; width:0.4; value:Sell; color: #212121; align: center;">
+
+    <a-entity id="stockTitle" position="-0.05 0.3 0"
+    geometry="primitive: plane; width: 0.2; height: 0.075"
+    material="color: #21c995;"
+    text="font:kelsonsans; width:0.60; value: Apple AAPL; color: #212121; align: center;">
 
     </a-entity>
 
