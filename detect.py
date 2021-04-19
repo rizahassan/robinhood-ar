@@ -3,11 +3,11 @@ import pytesseract
 import numpy as np
 
 # Mention the installed location of Tesseract-OCR in your system
-pytesseract.pytesseract.tesseract_cmd = 'System_path_to_tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
 # Read image from which text needs to be extracted
-img = cv2.imread("sample.jpg")
-# img = cv2.imread("burberry.jpg")
+# img = cv2.imread("sample.jpg")
+img = cv2.imread("burberry.jpg")
 # img = cv2.imread("subway.jpg")
 
   
@@ -37,42 +37,42 @@ dilation = cv2.dilate(thresh1, rect_kernel, iterations = 1)
 
 
 ############# Edge-Detection for Contours #############
-# # converting BGR to HSV
-# hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+# converting BGR to HSV
+hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
-# # define range of red color in HSV
-# lower_red = np.array([30,150,50])
-# upper_red = np.array([255,255,180])
+# define range of red color in HSV
+lower_red = np.array([30,150,50])
+upper_red = np.array([255,255,180])
     
-# # create a red HSV colour boundary and 
-# # threshold HSV image
-# mask = cv2.inRange(hsv, lower_red, upper_red)
+# create a red HSV colour boundary and 
+# threshold HSV image
+mask = cv2.inRange(hsv, lower_red, upper_red)
 
-# # Bitwise-AND mask and original image
-# res = cv2.bitwise_and(img,img, mask= mask)
+# Bitwise-AND mask and original image
+res = cv2.bitwise_and(img,img, mask= mask)
 
-# # Display an original image
-# cv2.imshow('Original',img)
+# Display an original image
+cv2.imshow('Original',img)
 
-# # finds edges in the input image image and
-# # marks them in the output map edges
-# edges = cv2.Canny(img,200,300)
+# finds edges in the input image image and
+# marks them in the output map edges
+edges = cv2.Canny(img,200,300)
 
-# # Display edges in a frame
-# cv2.imshow('Edges',edges)
+# Display edges in a frame
+cv2.imshow('Edges',edges)
 
-# # Wait for Esc key to stop
-# cv2.waitKey()
-# contours, hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL, 
-#                                                  cv2.CHAIN_APPROX_NONE)
-# contours = sorted(contours, key=cv2.contourArea, reverse=True)
+# Wait for Esc key to stop
+cv2.waitKey()
+contours, hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL, 
+                                                 cv2.CHAIN_APPROX_NONE)
+contours = sorted(contours, key=cv2.contourArea, reverse=True)
 #####################################################
 
 
   
-# Finding contours (comment out if above edge detection is used)
-contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, 
-                                                 cv2.CHAIN_APPROX_NONE)
+# # Finding contours (comment out if above edge detection is used)
+# contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, 
+#                                                  cv2.CHAIN_APPROX_NONE)
 
 #####################FILL EDGES#############################
 # # load image
@@ -107,13 +107,17 @@ contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL,
 # cv2.destroyAllWindows()
 ########################################################################
 
-# # Try filling the contours made from edges
-# my_img = img
-# my_img = np.zeros_like(my_img)
-# cv2.fillPoly(my_img, pts = contours, color=(255,255,255))
-# cv2.imshow("my_img", my_img)
-# cv2.waitKey()
-# exit(0)
+# # Try filling the contours made from edges (two methods shown)
+fillPoly_img = img
+fillPoly_img = np.zeros_like(fillPoly_img)
+drawContour_img = np.zeros_like(fillPoly_img)
+cv2.fillPoly(fillPoly_img, pts = contours, color=(255,255,255))
+cv2.drawContours(drawContour_img, contours, contourIdx=-1, color=(255,255,255), thickness=-1)
+cv2.imshow("fillPoly_img", fillPoly_img)
+cv2.waitKey()
+cv2.imshow("drawContour_img", drawContour_img)
+cv2.waitKey()
+exit(0) #####################  EXIT  #################
 
   
 # Creating a copy of image
