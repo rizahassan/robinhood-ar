@@ -1,0 +1,24 @@
+<!doctype HTML>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head><link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}"></head>
+    
+    
+    <body>
+        <div id="section-1">
+            <img src="{{ url_for('static', filename='images/login_image.png') }}" alt="A person with a mobile camera">
+            
+        
+        <form id="form" action = "http://localhost:5000/authenticate" method = "post">
+            <h1 id="title">RobinhoodAR</h1>
+           <p>Username/Email:</p>
+           <p><input type = "text" name = "username" /></p>
+           <p>Password:</p>
+           <p><input type = "text" name = "password" /></p>
+           <p><input type = "submit" value = "AR in!" /></p>
+        </form>
+    
+        </div>   
+     
+</body>
+</html>

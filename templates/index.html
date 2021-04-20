@@ -1,0 +1,50 @@
+<!doctype HTML>
+<html>
+  <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Importing stylesheet and script files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename = 'webcam.js') }}"></script>
+
+    <!-- Importing Aframe and ARjs -->
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+    <!-- Importing Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
+    </head>
+<!-- Backend camera using Webcam.js -->
+  <div id="my_camera"></div>
+  <!-- Importing script -->
+  <script type="text/javascript" src="/static/index.js" charset="utf-8"></script>
+  <body style="margin : 0px; overflow: hidden;">
+  <a-scene
+  >
+    <a-entity id="stock-card" position="0.3 1.7 -1"
+    geometry="primitive: box; width: 0.45; height: 0.6; depth: 0.1"
+    material="color: #21c995;"
+    >
+    <a-text font=kelsonsans position="-0.2 0.05 0.2" color="#212121" height="0.5" width="0.5" value="$0.00 \n\n - $1.64 (0.53%) Today \n\n -$0.37 (0.12%) After Hours"></a-text>
+    
+    <a-entity id="buybutton" position="-0.1 -0.13 0.2"
+    geometry="primitive: plane; width: 0.075; height: 0.075"
+    material="color: #00ba04;"
+    text="font:kelsonsans; width:0.4; value:Buy; color: #212121; align: center;">
+
+    <a-entity id="sellbutton" position="0.1 0 0"
+    geometry="primitive: plane; width: 0.075; height: 0.075"
+    material="color: #f45430;"
+    text="font:kelsonsans; width:0.4; value:Sell; color: #212121; align: center;">
+
+    <a-entity id="stockTitle" position="-0.05 0.3 0"
+    geometry="primitive: plane; width: 0.2; height: 0.075"
+    material="color: #21c995;"
+    text="font:kelsonsans; width:0.60; value: Apple AAPL; color: #212121; align: center;">
+
+    </a-entity>
+
+  </a-scene>
+  </body>
+</html>
