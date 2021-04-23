@@ -12,21 +12,6 @@ def detect_text(path):
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
-    # print('Texts len=' + str(texts.__len__()) + ' :')
-    # max_len = -1
-    # for ele in texts:
-    #     if len(str(ele.description)) > max_len:
-    #         max_len = len(str(ele.description))
-    #         res = ele.description
-    # second_max_len = -1
-    # for ele in texts:
-    #     if len(str(ele.description)) > second_max_len and len(str(ele.description)) != max_len:
-    #         second_max_len = len(str(ele.description))
-    #         res2 = ele.description
-    # if max_len != -1: print(res)
-    # if second_max_len != -1: print(str(res2).lower())
-    # if second_max_len != -1: return str(res2).lower()
-
     for text in texts:
         if len(str(text.description)) <= 1: continue
         # print("Searching for: " + str(text.description))
@@ -35,11 +20,6 @@ def detect_text(path):
             return str(text.description).lower().strip() # will check the robinhood ticker search api and if it finds a match, then returns
         else:
             continue
-
-        vertices = (['({},{})'.format(vertex.x, vertex.y)
-                    for vertex in text.bounding_poly.vertices])
-
-        print('bounds: {}'.format(','.join(vertices)))
 
     if response.error.message:
         raise Exception(
