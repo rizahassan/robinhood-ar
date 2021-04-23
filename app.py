@@ -9,8 +9,16 @@ from PIL import Image
 import PIL
 import io
 import base64
-app = Flask(__name__)
-app.secret_key = "super secret key"
+import logging
+
+
+# Disable log in Flask server
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_object('config')
+app.config.from_pyfile('config.py')
 
 # Host URL
 url = "http://localhost:5000"
@@ -83,7 +91,6 @@ def loginerror_page():
 @app.route('/view')
 def viewing_page():
     auth = session.get('auth',False)
-    print(auth, file=sys.stderr)
     if auth is True: 
         return render_template('index.html')
     else:
@@ -92,6 +99,5 @@ def viewing_page():
 
 
 if __name__ == '__main__':
-    #app.run(host='localhost',debug=True,port=4000)
     app.run(host='localhost', debug=True)
     # https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html
