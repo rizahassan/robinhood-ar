@@ -38,6 +38,8 @@ def image_info():
     imagePath =os.path.join(__location__, 'camera-image/image.png')
     im.save(imagePath,'png')
 
+    # TODO: maybe instead of saving the image, we can process the image and update the JSON information right here
+
     width, height = im.size
     imgformat=im.format
     return jsonify(width=width,height=height,imgformat=imgformat)
