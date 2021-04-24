@@ -28,6 +28,36 @@ def detect_text(path):
                 response.error.message))
 
 
+def text_detect(content):
+    """Detects text in the file."""
+    from google.cloud import vision
+    import io
+    client = vision.ImageAnnotatorClient()
+
+    # with io.open(path, 'rb') as image_file:
+    #     content = image_file.read()
+
+    image = vision.Image(content=content)
+ 
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+
+    for text in texts:
+        if len(str(text.description)) <= 1: continue
+        # print("Searching for: " + str(text.description))
+        if try_rh_search(str(text.description)):
+            # print(str(text.description).lower().strip())
+            return str(text.description).lower().strip() # will check the robinhood ticker search api and if it finds a match, then returns
+        else:
+            continue
+
+    if response.error.message:
+        raise Exception(
+            '{}\nFor more info on error messages, check: '
+            'https://cloud.google.com/apis/design/errors'.format(
+                response.error.message))
+
+
 def try_rh_search(text):
     import robin_stocks.robinhood as rh
     # import robin_stocks.gemini as gem

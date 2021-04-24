@@ -39,12 +39,15 @@ def image_info():
     imgdata = base64.b64decode(myfile[1])
     im = Image.open(io.BytesIO(imgdata))
 
+    from cloud_detect import text_detect
+    print(text_detect(imgdata))
+
     # Save the latest snapshot to the camera-image directory in a .png format
     __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
     fileName="image.png"
     imagePath =os.path.join(__location__, 'camera-image/image.png')
-    im.save(imagePath,'png')
+    # im.save(imagePath,'png')
 
     width, height = im.size
     imgformat=im.format
