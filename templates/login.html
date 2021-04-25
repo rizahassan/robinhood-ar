@@ -1,24 +1,79 @@
 <!doctype HTML>
-<html>
+<html class="h-100">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head><link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}"></head>
+    <head><link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    </head>
     
     
-    <body>
-        <div id="section-1">
-            <img src="{{ url_for('static', filename='images/login_image.png') }}" alt="A person with a mobile camera">
-            
+    <body class="mw-100 h-100">
+        <div id="section-1" class="container h-100">
+            <div id="login-form">
+            <div class="d-flex justify-content-center pt-4">
+            <img src="{{ url_for('static', filename='images/login_image.png') }}" alt="A person with a mobile camera" class="w-75 h-50">
+            </div>
         
-        <form id="form" action = "http://localhost:5000/authenticate" method = "post">
+        <form id="form" action = "http://localhost:5000/authenticate" method = "post" >
             <h1 id="title">RobinhoodAR</h1>
-           <p>Username/Email:</p>
-           <p><input type = "text" name = "username" /></p>
-           <p>Password:</p>
-           <p><input type = "text" name = "password" /></p>
-           <p><input type = "submit" value = "AR in!" /></p>
+           <p>Email:</p>
+           <div class="d-flex justify-content-center">
+               <input type = "email" name = "username" class="form-control px-2 w-50"/>
+            </div>
+           
+           <p class="mt-2">Password:</p>
+           <div class="d-flex justify-content-center">
+               <input type = "password" name = "password" class="form-control px-2 w-50"/>
+            </div>
+
+            <p class="mt-2">MFA Code:</p>
+            <div class="d-flex justify-content-center">
+                <input type = "password" name = "mfaCode" class="form-control px-2 w-50"/>
+             </div>
+
+           
+           <button type="submit" class="btn btn-outline-success mt-4">AR In!</button>
+
         </form>
-    
-        </div>   
-     
+    </div>
+        </div>
+        <div id="section-2" class="container px-4 h-100">
+            <h1 class="mt-4 text-center">Point and invest</h1>
+            <div class="row mt-4 d-flex justify-content-center">
+                <div class="col-2">
+                    <img class="w-75 h-50 mt-2" src="{{ url_for('static', filename='images/1.png') }}" alt="1">
+                    
+                </div>
+                <div class="col-9 col-lg-5 "><h4>Login to your Robinhood account</h4></div>
+            </div>
+            <div class="row mt-4 d-flex justify-content-center">
+                <div class="col-2">
+                    <img class="w-75 h-50 mt-2" src="{{ url_for('static', filename='images/2.png') }}" alt="1">
+                    
+                </div>
+                <div class="col-9 col-lg-5 "><h4>Point your camera to a company text</h4></div>
+            </div>
+            <div class="row mt-4 d-flex justify-content-center">
+                <div class="col-2">
+                    <img class="w-75 h-50 mt-2" src="{{ url_for('static', filename='images/3.png') }}" alt="1">
+                    
+                </div>
+                <div class="col-9 col-lg-5 "><h4>View the stock information in AR</h4></div>
+            </div>
+            
+
+            
+            
+            
+
+        </div>
+        <footer class="footer mt-auto border border-1 bg-green">
+            <p class="text-center text-white mt-2">RobinhoodAR © 2021 </p>
+            <p class="text-center text-white mt-2 px-2">Developed by Arshad Habib, Dineth Gunawardena, Riza Hassan, Roshan Poduval</p>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

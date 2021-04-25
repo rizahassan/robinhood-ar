@@ -11,6 +11,23 @@
     align-items: center;
 }
 
+#logout{
+    position:absolute;
+    z-index:9999;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    
+}
+
+#logout-button{
+    padding:10px;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+}
+
 .arjs-loader div {
     text-align: center;
     font-size: 1.25em;

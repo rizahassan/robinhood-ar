@@ -10,6 +10,7 @@ import PIL
 import io
 import base64
 import logging
+import pyotp
 
 
 # Disable log in Flask server
@@ -28,6 +29,21 @@ url = "http://localhost:5000"
 def login_page():
     session['auth'] = True
     return render_template('login.html')
+
+# Route to login error page
+@app.route('/login-error')
+def loginerror_page():
+    session['auth'] = False
+    return render_template('loginerror.html')
+
+# Route to access the Augmented Reality
+@app.route('/view')
+def viewing_page():
+    auth = session.get('auth',False)
+    if auth is True: 
+        return render_template('index.html')
+    else:
+        return redirect('/')
 
 # GET HTTP REQUEST
 # URL : http://localhost:5000/image_info
@@ -63,13 +79,18 @@ def authenticate():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        print((username,password), file=sys.stderr)
+        mfaCode = request.form['mfaCode']
+        expireMin = 86400
 
-
-        if (username or password) != '':
+        # If username/password/mfaCode is not empty, then complete the authentication
+        if (username or password or mfaCode) != '':
             message = {'message':'User authenticated'}
+            mfaCode= mfaCode.encode("UTF-8")
+            mfaCode= base64.b32encode(mfaCode)
+            totp  = pyotp.TOTP(mfaCode).now()
             
-            login = rh.login(username,password)
+            login = rh.login(username,password,expireMin,mfa_code=totp)
+
             # Get the access token from the robinhood login
             access = login.get('access_token',None)
 
@@ -81,23 +102,20 @@ def authenticate():
                 return redirect('/login-error')
         else:
             error = {'error':'Missing username or password'}
-            session['auth'] = Falsegit 
+            session['auth'] = False
             return redirect('/login-error')
 
-# Route to login error page
-@app.route('/login-error')
-def loginerror_page():
-    session['auth'] = False
-    return render_template('loginerror.html')
-
-# Route to access the Augmented Reality
-@app.route('/view')
-def viewing_page():
-    auth = session.get('auth',False)
-    if auth is True: 
-        return render_template('index.html')
-    else:
+# POST HTTP REQUEST
+# URL : http://localhost:5000/login
+# Log out user from the Robinhood account and exit the AR view
+@app.route('/logout',methods=['POST'])
+def logout():
+    # Logout POST Request
+    if request.method == 'POST':
+        rh.logout()
+        session['auth'] = False
         return redirect('/')
+
 
 
 
