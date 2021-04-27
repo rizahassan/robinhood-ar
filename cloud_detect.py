@@ -81,11 +81,11 @@ def main():
     # detect_text("sample.jpg")
     # assert detect_text("burberry.jpg") == 'burberry' # seems like skewed text also has a problem ## output = burberr
     
-    assert detect_text("subway.jpg") == None # since subway is not a publically traded company
-    assert detect_text("mcdonalds.jpg") == "mcdonald's"
-    # assert detect_text("starbucks.png") == "starbucks" # seems like curved text causes problems ## output = coffee
-    assert detect_text("amazon.jpg") == "amazon"
-    assert detect_text("microsoft.jpg") == "microsoft"
+    # assert detect_text("subway.jpg") == None # since subway is not a publically traded company
+    # assert detect_text("mcdonalds.jpg") == "mcdonald's"
+    # # assert detect_text("starbucks.png") == "starbucks" # seems like curved text causes problems ## output = coffee
+    # assert detect_text("amazon.jpg") == "amazon"
+    # assert detect_text("microsoft.jpg") == "microsoft"
 
 
 if __name__ == "__main__":
