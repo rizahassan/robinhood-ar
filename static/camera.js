@@ -20,8 +20,8 @@ data: "myimage=" + encodeURIComponent(data_uri),
 url: "/image_info",
 contentType: false,
 processData: false,
-success: function (jsonresult) {
-    console.log(jsonresult);
+error:function(error){
+    console.log(`Error ${error}`)
 }
 });
 });
