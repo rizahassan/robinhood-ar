@@ -17,9 +17,10 @@ import requests
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_object('config')
-app.config.from_pyfile('config.py')
+app = Flask(__name__)
+app.secret_key = "super secret key"
+# app.config.from_object('config')
+# app.config.from_pyfile('config.py')
 
 # Host URL
 url = "http://localhost:5000"
@@ -54,15 +55,9 @@ def viewing_page():
 
 # GET HTTP REQUEST
 # URL : http://localhost:5000/stock_info
-stocks = []
-text_result = ""
-
 
 @app.route('/stock_info', methods=['GET'])
 def returnStock():
-
-   # for users first time logging in
-   # login = rh.login("roshan.poduval@gmail.com", "testpassword579")
 
     stock = rh.stocks.find_instrument_data(text_result)
 
@@ -70,17 +65,14 @@ def returnStock():
     if stock[0] is not None:
         stockPrice = (rh.stocks.get_latest_price(stock[0]["symbol"]))
         stock[0]['stockPrice'] = " ".join(stockPrice)
-
-        # delete any stock information if needed
-        # example: del stock[0]['url']
-
-    return jsonify({'stocks': stock[0]})
+        return jsonify({'stocks': stock[0]})
+    else: 
+        return jsonify(error="Stock not found")
 
 
 # GET HTTP REQUEST
 # URL : http://localhost:5000/image_info
 # Save the snapshot from the webcam to the camera-image directory
-
 
 @app.route("/image_info", methods=['GET'])
 def image_info():
@@ -92,7 +84,6 @@ def image_info():
     # Store and display text_detect output for get request
     from cloud_detect import text_detect
     text_detect_output = text_detect(imgdata)
-    print(text_detect_output)
 
     # Retrieve text_detect output and send get request for stock information
     if(text_detect_output != None):
@@ -123,7 +114,7 @@ def authenticate():
             mfaCode = base64.b32encode(mfaCode)
             totp = pyotp.TOTP(mfaCode).now()
 
-            # login = rh.login(username, password, expireMin, mfa_code=totp)
+            login = rh.login(username, password, expireMin, mfa_code=totp)
 
             # Get the access token from the robinhood login
             access = login.get('access_token', None)
