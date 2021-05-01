@@ -63,8 +63,8 @@ def viewing_page():
 def returnStock():
     global text_result
     print(text_result)
-    if (len(text_result) >= 1):
-        stock = rh.stocks.find_instrument_data(text_result)
+    # if (len(text_result) >= 1):
+    stock = rh.stocks.find_instrument_data(text_result)
 
     # Add stock price to dictionary
     if stock[0] is not None:
@@ -79,7 +79,7 @@ def returnStock():
 # URL : http://localhost:5000/image_info
 # Save the snapshot from the webcam to the camera-image directory
 
-@app.route("/image_info", methods=['POST'])
+@app.route("/image_info", methods=['GET'])
 def image_info():
     # Get the image in URI Base 64 format
     myfile = request.args.get('myimage').split(',')

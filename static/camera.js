@@ -15,14 +15,14 @@ take_snapshot()
 function take_snapshot() {
 Webcam.snap(function (data_uri) {
 $.ajax({
-type: "post",
+type: "GET",
 data: "myimage=" + encodeURIComponent(data_uri),
-url: "{{ url_for('image_info') }}" ,
+url: "/image_info" ,
 contentType: false,
 processData: false,
-success:function(jsonresult){
-    console.log(jsonresult);
-},
+// success:function(jsonresult){
+//     console.log(jsonresult);
+// },
 error:function(error){
     console.log(`Error ${error}`)
 }

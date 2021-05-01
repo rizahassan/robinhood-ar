@@ -12,8 +12,8 @@ function get_stock(){
     var quote;
 
     $.ajax({
-        type: "get",
-        url: "{{ url_for('stock_info') }}" ,
+        type: "GET",
+        url: "/stock_info" ,
         contentType: false,
         processData: false,
         success: function (jsonresult) {
