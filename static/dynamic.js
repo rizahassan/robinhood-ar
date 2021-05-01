@@ -17,7 +17,6 @@ function get_stock(){
         contentType: false,
         processData: false,
         success: function (jsonresult) {
-            console.log(jsonresult);
             var obj = jsonresult;
             companyName = obj.stocks.simple_name;
             ticker = obj.stocks.symbol;

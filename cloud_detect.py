@@ -77,7 +77,7 @@ def try_rh_search(text):
         return True
 
 
-def main():
+# def main():
     # detect_text("sample.jpg")
     # assert detect_text("burberry.jpg") == 'burberry' # seems like skewed text also has a problem ## output = burberr
     
@@ -88,6 +88,6 @@ def main():
     # assert detect_text("microsoft.jpg") == "microsoft"
 
 
-if __name__ == "__main__":
-    # execute only if run as a script
-    main()
+# if __name__ == "__main__":
+#     # execute only if run as a script
+#     main()

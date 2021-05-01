@@ -57,17 +57,19 @@ def viewing_page():
 
 # GET HTTP REQUEST
 # URL : http://localhost:5000/stock_info
+text_result = ""
 
 @app.route('/stock_info', methods=['GET'])
 
 def returnStock():
     global text_result
-    print(text_result)
-    # if (len(text_result) >= 1):
-    stock = rh.stocks.find_instrument_data(text_result)
+    
+    stock=[]
+    if (len(text_result) >= 1):
+        stock = rh.stocks.find_instrument_data(text_result)
 
     # Add stock price to dictionary
-    if stock[0] is not None:
+    if len(stock) != 0:
         stockPrice = (rh.stocks.get_latest_price(stock[0]["symbol"]))
         stock[0]['stockPrice'] = " ".join(stockPrice)
         return jsonify({'stocks': stock[0]})
