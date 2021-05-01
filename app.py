@@ -57,7 +57,7 @@ def viewing_page():
 # URL : http://localhost:5000/stock_info
 
 @app.route('/stock_info', methods=['GET'])
-def returnStock():
+def stock_info():
 
     stock = rh.stocks.find_instrument_data(text_result)
 
@@ -106,6 +106,7 @@ def authenticate():
         password = request.form['password']
         mfaCode = request.form['mfaCode']
         expireMin = 86400
+        
 
         # If username/password/mfaCode is not empty, then complete the authentication
         if (username or password or mfaCode) != '':
