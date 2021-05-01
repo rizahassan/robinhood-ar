@@ -25,6 +25,8 @@ app.secret_key = "super secret key"
 # Host URL
 url = "http://localhost:5000"
 
+text_result = ""
+
 # Route to the landing page
 
 
@@ -57,9 +59,12 @@ def viewing_page():
 # URL : http://localhost:5000/stock_info
 
 @app.route('/stock_info', methods=['GET'])
-def stock_info():
 
-    stock = rh.stocks.find_instrument_data(text_result)
+def returnStock():
+    global text_result
+    print(text_result)
+    if (len(text_result) >= 1):
+        stock = rh.stocks.find_instrument_data(text_result)
 
     # Add stock price to dictionary
     if stock[0] is not None:
