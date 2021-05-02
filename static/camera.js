@@ -15,7 +15,7 @@ take_snapshot()
 function take_snapshot() {
 Webcam.snap(function (data_uri) {
 $.ajax({
-type: "POST",
+type: "GET",
 data: "myimage=" + encodeURIComponent(data_uri),
 url: "/image_info" ,
 contentType: false,
