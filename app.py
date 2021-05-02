@@ -84,7 +84,7 @@ def returnStock():
 @app.route("/image_info", methods=['GET'])
 def image_info():
     # Get the image in URI Base 64 format
-    myfile = request.args.get('myimage').split(',')
+    myfile = request.args.get('myimage').split(',') ## TODO: "AttributeError: 'NoneType' object has no attribute 'split'" gets thrown here
     imgdata = base64.b64decode(myfile[1])
     im = Image.open(io.BytesIO(imgdata))
 
