@@ -81,7 +81,7 @@ def returnStock():
 # URL : http://localhost:5000/image_info
 # Save the snapshot from the webcam to the camera-image directory
 
-@app.route("/image_info", methods=['GET'])
+@app.route("/image_info", methods=['POST'])
 def image_info():
     # Get the image in URI Base 64 format
     myfile = request.args.get('myimage').split(',')
