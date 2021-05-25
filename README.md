@@ -1,6 +1,9 @@
 # Robinhood AR
 A web application that shows stock information in AR.
 
+## Setup Google Vision API
+This application uses the Google Vision API to perform text detection. Please visit [Google Vision API doc](https://cloud.google.com/vision/docs/setup) to set up the API. Create a service account key and then export the key into the virtual environment.
+
 ## How to run
 After cloning the repository, go the RobinhoodAR directory, and run these commands on your Command Line terminal
 
@@ -20,10 +23,11 @@ Then, search for localhost:5000 on your browser to see the web app.
 
 ### Note
 Make sure to activate virtual environment before making any development. Once completed with development,
-run `pip3 freeze > requirements.txt` to update the file with new dependencies
+run `pip3 freeze > requirements.txt` to update the file with new dependencies.
+
+If there are any issues, please create an issue on this repository. Our team will look into it.
 
 
-### robin-api: TODO - Add documentation for robin-api changes
-- make sure we can search for stock symbol/ticker
-- want to decide what stock information to get
-- figure out how to display the results from to the ar app
+
+
+
